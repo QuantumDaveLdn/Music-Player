@@ -32,8 +32,12 @@ A music player application built with HTML, CSS (including Tailwind), and Vanill
     * **Mac:** `open index.html`
     * **Windows:** `start index.html`
     * Or simply double-click the `index.html` file.
+  
+    OR
 
-4.  **Interact with the Player:**
+    Visit the github pages associated with this repo: https://quantumdaveldn.github.io/Music-Player/
+
+5.  **Interact with the Player:**
     * Use the play/pause, next, previous, and shuffle buttons.
     * Click on songs in the playlist to play them.
     * Click the 'X' button next to a song to remove it.
