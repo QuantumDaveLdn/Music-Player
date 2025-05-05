@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Enhanced Music Player</title>
+</head>
+<body class="bg-[#121212] text-gray-300">
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="container mx-auto p-4 md:p-8 flex flex-col lg:flex-row gap-8 min-h-screen relative z-10">
+
+        <div class="player bg-[#181818] rounded-lg shadow-lg p-6 lg:w-1/3 flex flex-col items-center text-center">
+            <h2 class="text-xl font-semibold mb-4 text-white">Now Playing</h2>
+            <div id="player-album-art" class="mb-4 rounded-md overflow-hidden shadow-md w-48 h-48 md:w-64 md:h-64 bg-gray-700 flex items-center justify-center">
+                <img id="album-art-img"
+                     src="https://placehold.co/256x256/181818/535353?text=Music"
+                     alt="Album Art"
+                     class="w-full h-full object-cover"
+                     onerror="this.onerror=null; this.src='https://placehold.co/256x256/181818/535353?text=Music';">
+            </div>
+
+            <div class="player-display-song-artist mb-6 h-16">
+                <p id="player-song-title" class="text-lg font-bold text-white truncate w-64"></p>
+                <p id="player-song-artist" class="text-sm text-gray-400 truncate w-64"></p>
+            </div>
+
+            <div class="player-buttons flex items-center justify-center gap-4 md:gap-6 w-full">
+                <button id="shuffle" class="player-button shuffle" aria-label="Shuffle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shuffle"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="21" y2="3"></line><polyline points="21 16 21 21 16 21"></polyline><line x1="15" y1="15" x2="21" y2="21"></line><line x1="4" y1="4" x2="9" y2="9"></line></svg>
+                </button>
+                <button id="previous" class="player-button previous" aria-label="Previous">
+                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="19 20 9 12 19 4 19 20"></polygon><polygon points="5 19 5 5 7 5 7 19 5 19"></polygon></svg>
+                </button>
+                <button id="play" class="player-button play" aria-label="Play">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </button>
+                <button id="pause" class="player-button pause hidden" aria-label="Pause">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                 </button>
+                 <button id="next" class="player-button next" aria-label="Next">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 4 15 12 5 20 5 4"></polygon><polygon points="19 5 17 5 17 19 19 19 19 5"></polygon></svg>
+                </button>
+                <button class="player-button opacity-50 cursor-not-allowed" aria-label="Repeat (disabled)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-repeat"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="playlist bg-[#181818] rounded-lg shadow-lg p-6 lg:w-2/3 flex flex-col">
+            <h2 class="text-xl font-semibold mb-4 text-white">Playlist</h2>
+            <ul id="playlist-songs" class="flex-grow overflow-y-auto space-y-1 pr-2">
+                </ul>
+            <div id="reset-container" class="mt-4 flex justify-center"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
